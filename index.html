@@ -348,8 +348,8 @@ const DEPARTMENTS = [
   { id:"cost", n:2, name:"ต้นทุนเสา", color:"#b45309", password:"cost123",
     fields:[
       {g:"ข้อมูลขนส่ง (ระดับโปรเจค)", row:true},
-      {k:"fuelPrice", l:"ราคาน้ำมัน (บาท/ลิตร)", t:"fuelSelect", w:"102px"},
-      {k:"distRange", l:"ระยะทางส่ง",          t:"distSelect", w:"176px"},
+      {k:"fuelPrice", l:"ราคาน้ำมัน (บาท/ลิตร)", t:"fuelSelect", w:"92px"},
+      {k:"distRange", l:"ระยะทางส่ง",          t:"distSelect", w:"158px"},
       {costItems:true},
     ]},
   { id:"ap", n:3, name:"ต้นทุนการติดตั้ง", color:"#7c3aed", password:"ap123",
@@ -1058,7 +1058,7 @@ function renderSalesItems(p,locked){
       <th>Quantity</th><th>Unit</th>
       <th>รายได้เสา (บาท)</th><th>รายได้ค่าติดตั้ง (บาท)</th><th>รายได้ Prebore (บาท)</th><th></th>
     </tr></thead><tbody>${rows}</tbody></table></div>
-    ${locked?"":`<button class="btn" style="margin-top:10px" onclick="addSalesItem()">＋ เพิ่มรายการ</button>`}
+    ${locked?"":`<button class="btn" style="margin-top:10px;font-size:11.5px;padding:6px 11px" onclick="addSalesItem()">＋ เพิ่มรายการ</button>`}
   </div>`;
 }
 
