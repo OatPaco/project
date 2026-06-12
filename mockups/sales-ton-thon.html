@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — รายการขายฝ่ายขาย (ต้น → ท่อน)</title>
+<!--
+  Mockup แบบ static (ไม่ทำงานจริง) ของ "รายการ" ฝ่ายขาย เวอร์ชันที่ตกลงกัน:
+  - ขายเป็น "ต้น" แล้วกางเป็น "ท่อน"
+  - header คอลัมน์อยู่ใต้แต่ละแถบต้น · บีบแนวตั้ง · ยุบ/กางรายต้นได้
+  ใช้ประกอบ DESIGN-NOTES.md — เปิดไฟล์นี้ในเบราว์เซอร์เพื่อดูหน้าตาเป้าหมาย
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f6;min-height:100vh;padding:24px 14px}
+.note{max-width:760px;margin:0 auto 14px;font-family:'IBM Plex Sans Thai',system-ui,sans-serif;font-size:12.5px;color:#5b6678;
+  background:#fff8e8;border:1px solid #f0e0b0;border-radius:10px;padding:10px 14px;line-height:1.55}
+.note b{color:#5e4708}
+.wrap{max-width:760px;margin:0 auto}
+.pe{--ink:#1a2230;--ink-soft:#5b6678;--line:#e3e7ef;--line-strong:#c7cedd;--bg:#f4f6fb;--panel:#fff;--accent:#1f4e79;--accent-soft:#eaf1f9;--pos:#1f7a45;--neg:#c0392b;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans Thai',system-ui,sans-serif;--dc:#1f4e79;font-family:var(--sans);color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 1px 1px,rgba(31,78,121,.05) 1px,transparent 0);background-size:22px 22px;border-radius:14px;padding:18px}
+.pe .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(20,30,50,.05),0 8px 24px rgba(20,30,50,.06);overflow:hidden}
+.pe .chead{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);position:relative}
+.pe .chead::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--dc)}
+.pe .cnum{width:24px;height:24px;border-radius:7px;background:var(--dc);color:#fff;font-family:var(--mono);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-left:2px}
+.pe .cname{font-weight:700;font-size:15px}
+.pe .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#eef6ef;color:var(--pos)}
+.pe .cbody{padding:13px 16px 15px}
+.pe .grp{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--dc);text-transform:uppercase;margin:0 0 8px}
+.pe .liwrap{border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.pe table.li{border-collapse:collapse;width:100%;font-size:11.5px;table-layout:fixed}
+.pe table.li td{padding:3px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.pe tr.colh td{background:#f1f5fb;color:var(--ink-soft);font-weight:600;font-size:11px;padding:5px 8px;border-bottom:1px solid var(--line)}
+.pe .mono{font-family:var(--mono)}
+.pe .sel{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line-strong);border-radius:7px;padding:2px 6px;background:#fdfdff}
+.pe .cv{color:var(--ink-soft);font-size:10px}
+.pe .lock{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)}
+.pe .itemno{font-family:var(--mono);color:var(--accent);font-weight:600;background:var(--accent-soft);padding:2px 7px;border-radius:5px}
+.pe .tband td{background:var(--accent-soft);border-top:1.5px solid var(--accent);padding:5px 8px}
+.pe .tname{font-weight:700;color:var(--accent);font-size:12.5px}
+.pe .tchip{font-family:var(--mono);font-size:11px;background:#fff;border:1px solid #c7d8ea;border-radius:5px;padding:1px 6px;color:var(--accent)}
+.pe .tmeta{font-size:11px;color:var(--accent)}
+.pe .tmeta b{font-family:var(--mono)}
+.pe .subt td{background:#fbfcfe;font-weight:700;color:var(--accent)}
+.pe .btn{font-family:var(--sans);font-weight:600;font-size:12px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);padding:7px 13px;border-radius:9px;display:inline-flex;align-items:center;gap:6px;margin-top:11px}
+.pe .mc{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.pe .mcard{flex:1;min-width:150px;background:var(--accent-soft);border:1px solid #cfe0f0;border-radius:9px;padding:9px 13px}
+.pe .mcap{font-size:11px;color:var(--accent);font-weight:600}
+.pe .mval{font-family:var(--mono);font-size:18px;font-weight:600;color:var(--accent)}
+.pe .toolbtn{font-size:11px;color:var(--accent);border:1px solid var(--line-strong);border-radius:7px;padding:3px 9px;background:#fff}
+</style>
+</head>
+<body>
+<div class="note"><b>Mockup (static):</b> หน้าตาเป้าหมายของ "รายการ" ฝ่ายขาย — ขายเป็นต้น กางเป็นท่อน · ยังไม่ทำงานจริง ใช้ประกอบ <b>DESIGN-NOTES.md</b></div>
+<div class="wrap">
+  <div class="pe">
+    <div class="card">
+      <div class="chead">
+        <span class="cnum">1</span>
+        <span class="cname">ฝ่ายขาย</span>
+        <span class="pill">หน่วยขาย: ต้น</span>
+        <span style="margin-left:auto;display:inline-flex;gap:6px">
+          <span class="toolbtn">ยุบทั้งหมด</span>
+          <span class="toolbtn">กางทั้งหมด</span>
+        </span>
+      </div>
+      <div class="cbody">
+        <div class="grp">รายการ</div>
+        <div class="liwrap">
+          <table class="li">
+            <colgroup><col style="width:15%"><col style="width:17%"><col style="width:13%"><col style="width:13%"><col style="width:24%"><col style="width:18%"></colgroup>
+            <tbody>
+              <tr class="tband"><td colspan="6">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:7px">
+                  <span style="color:var(--accent)">▾</span>
+                  <span class="tname">ต้น #1</span>
+                  <span class="tchip">C · 60 · A</span>
+                  <span class="tmeta">ท่อน/ต้น <b>2</b></span>
+                  <span class="tmeta">ระบบ <b>PD</b></span>
+                  <span class="tmeta">จำนวน <b>150</b> ต้น</span>
+                  <span class="tmeta" style="margin-left:auto">ค่าเสา/ต้น <b>56,667</b> · ค่าตอก/ต้น <b>18,667</b></span>
+                </div>
+              </td></tr>
+              <tr class="colh">
+                <td>ท่อน</td><td>ล็อก</td><td style="text-align:center">ยาว</td><td style="text-align:center">หัวต่อ</td><td>item number</td><td style="text-align:right">คิว (m³)</td>
+              </tr>
+              <tr>
+                <td>1 <span class="cv">ล่าง</span></td>
+                <td><span class="lock">🔒 C·60·A</span></td>
+                <td style="text-align:center"><span class="sel mono">12.00 <span class="cv">▾</span></span></td>
+                <td style="text-align:center"><span class="sel">T02 <span class="cv">▾</span></span></td>
+                <td><span class="itemno">C60A1200T02</span></td>
+                <td class="mono" style="text-align:right">1.8852</td>
+              </tr>
+              <tr>
+                <td>2 <span class="cv">บน</span></td>
+                <td><span class="lock">🔒 C·60·A</span></td>
+                <td style="text-align:center"><span class="sel mono">12.00 <span class="cv">▾</span></span></td>
+                <td style="text-align:center"><span class="sel">T02 <span class="cv">▾</span></span></td>
+                <td><span class="itemno">C60A1200T02</span></td>
+                <td class="mono" style="text-align:right">1.8852</td>
+              </tr>
+              <tr class="subt">
+                <td colspan="2" style="font-weight:600;color:var(--ink-soft)">รวม/ต้น</td>
+                <td class="mono" style="text-align:center">24.00</td>
+                <td></td>
+                <td style="font-weight:400;color:var(--ink-soft);font-size:11px">2 ท่อน</td>
+                <td class="mono" style="text-align:right">3.7704</td>
+              </tr>
+
+              <tr class="tband"><td colspan="6">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:7px">
+                  <span style="color:var(--accent)">▾</span>
+                  <span class="tname">ต้น #2</span>
+                  <span class="tchip">C · 80 · A</span>
+                  <span class="tmeta">ท่อน/ต้น <b>3</b></span>
+                  <span class="tmeta">ระบบ <b>PD,Rig</b></span>
+                  <span class="tmeta">จำนวน <b>96</b> ต้น</span>
+                  <span class="tmeta" style="margin-left:auto">ค่าเสา/ต้น <b>98,600</b> · ค่าตอก/ต้น <b>30,800</b></span>
+                </div>
+              </td></tr>
+              <tr class="colh">
+                <td>ท่อน</td><td>ล็อก</td><td style="text-align:center">ยาว</td><td style="text-align:center">หัวต่อ</td><td>item number</td><td style="text-align:right">คิว (m³)</td>
+              </tr>
+              <tr>
+                <td>1 <span class="cv">ล่าง</span></td>
+                <td><span class="lock">🔒 C·80·A</span></td>
+                <td style="text-align:center"><span class="sel mono">13.00 <span class="cv">▾</span></span></td>
+                <td style="text-align:center"><span class="sel">T02 <span class="cv">▾</span></span></td>
+                <td><span class="itemno">C80A1300T02</span></td>
+                <td class="mono" style="text-align:right">3.2500</td>
+              </tr>
+              <tr>
+                <td>2 <span class="cv">กลาง</span></td>
+                <td><span class="lock">🔒 C·80·A</span></td>
+                <td style="text-align:center"><span class="sel mono">13.00 <span class="cv">▾</span></span></td>
+                <td style="text-align:center"><span class="sel">T02 <span class="cv">▾</span></span></td>
+                <td><span class="itemno">C80A1300T02</span></td>
+                <td class="mono" style="text-align:right">3.2500</td>
+              </tr>
+              <tr>
+                <td>3 <span class="cv">บน</span></td>
+                <td><span class="lock">🔒 C·80·A</span></td>
+                <td style="text-align:center"><span class="sel mono">10.00 <span class="cv">▾</span></span></td>
+                <td style="text-align:center"><span class="sel">T01 <span class="cv">▾</span></span></td>
+                <td><span class="itemno">C80A1000T01</span></td>
+                <td class="mono" style="text-align:right">2.5000</td>
+              </tr>
+              <tr class="subt">
+                <td colspan="2" style="font-weight:600;color:var(--ink-soft)">รวม/ต้น</td>
+                <td class="mono" style="text-align:center">36.00</td>
+                <td></td>
+                <td style="font-weight:400;color:var(--ink-soft);font-size:11px">3 ท่อน</td>
+                <td class="mono" style="text-align:right">9.0000</td>
+              </tr>
+
+              <tr class="tband"><td colspan="6">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:7px">
+                  <span style="color:var(--accent)">▸</span>
+                  <span class="tname">ต้น #3</span>
+                  <span class="tchip">C · 50 · A</span>
+                  <span class="tmeta">ท่อน/ต้น <b>2</b></span>
+                  <span class="tmeta">จำนวน <b>40</b> ต้น</span>
+                  <span class="cv" style="font-size:11px">(ยุบอยู่ — คลิกเพื่อกาง)</span>
+                  <span class="tmeta mono" style="margin-left:auto">คิว/ต้น 2.36</span>
+                </div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button class="btn">＋ เพิ่มต้น</button>
+
+        <div class="mc">
+          <div class="mcard"><div class="mcap">คิวรวมทั้งใบเสนอ (m³)</div><div class="mval">1,524.04</div></div>
+          <div class="mcard"><div class="mcap">รวม ต้น / ท่อน</div><div class="mval">286 / 632</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
